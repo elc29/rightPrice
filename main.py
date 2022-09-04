@@ -1,16 +1,29 @@
-# This is a sample Python script.
+from random import randint
+from interactionModule import *
 
-# Press Maj+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+"""
+--- rightPrice ---
+First step : the program generate a random int
+Second step : the goal of the user is to find the right price
+Third step : each time that the user has a false value, its reachable final score (maximum value : 10)
+decreased and the program say if the price is bigger or smaller than the user's price.
+"""
 
+# First step : the program generate a random int
+theRightPrice = randint(0, 1000)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# Second step : the goal of the user is to find the right price
+userPrice = int(input('Which price do you think of ?\n'))
 
+# Creating a variable for the initial user's score
+score = 10
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# Third step : each time that the user has a false value, its reachable final score (maximum value : 10) decreased.
+while userPrice != theRightPrice and score != 0:
+    # the program say if the price is bigger or smaller than the user's price
+    print(compare_value(userPrice, theRightPrice))
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    score = score - 1
+    userPrice = int(input('Which price do you think of ?\n'))
+
+print(final_msg(score))
